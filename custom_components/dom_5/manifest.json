@@ -1,0 +1,11 @@
+{
+  "domain": "dom_5",
+  "name": "Dom 5",
+  "documentation": "https://github.com/PiotrMachowski/Home-Assistant-custom-components-Dom-5",
+  "issue_tracker": "https://github.com/PiotrMachowski/Home-Assistant-custom-components-Dom-5/issues",
+  "dependencies": [],
+  "codeowners": ["@PiotrMachowski"],
+  "requirements": ["requests", "html2text"],
+  "version": "v1.0.0",
+  "config_flow": true
+}

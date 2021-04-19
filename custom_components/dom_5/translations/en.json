@@ -1,0 +1,23 @@
+{
+  "title" : "Dom 5",
+  "config": {
+    "abort": {
+      "already_configured": "[This integration is already configured]"
+    },
+    "error": {
+      "cannot_connect": "[Invalid URL]",
+      "invalid_auth": "[Invalid username or password]"
+    },
+    "step": {
+      "user": {
+        "title": "Dom 5",
+        "description": "Please provide URL and credentials to Dom 5 system",
+        "data": {
+          "url": "URL",
+          "password": "Password",
+          "username": "Username"
+        }
+      }
+    }
+  }
+}

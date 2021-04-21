@@ -56,5 +56,28 @@ sensor:
     password: "SecretPassword"
 ```
 
+## Displaying data
+You can display data from this integration using [Markdown card](https://www.home-assistant.io/lovelace/markdown/):
+
+```yaml
+type: markdown
+content: |-
+  {%- set username="123456" -%}
+  # Latest announcement
+  ## {{ state_attr('sensor.dom_5_last_announcement_' + username, 'title') }}
+  {{ state_attr('sensor.dom_5_last_announcement_' + username, 'body') }}
+  ---  
+  # Latest message
+  ## {{ state_attr('sensor.dom_5_last_message_' + username, 'title') }}  
+  {{ state_attr('sensor.dom_5_last_message_' + username, 'body') }}
+  ---
+  # Finances
+  **Balance:** {{ "%.2f zł" | format(states('sensor.dom_5_finances_' + username)
+  | float) }}
+  **Arrear:** {{ "%.2f zł" | format(state_attr('sensor.dom_5_finances_' +
+  username, 'arrear') | float) }}
+  **Overpayment:** {{ "%.2f zł" | format(state_attr('sensor.dom_5_finances_' +
+  username, 'overpayment') | float) }}
+  ```
 
 <a href="https://www.buymeacoffee.com/PiotrMachowski" target="_blank"><img src="https://bmc-cdn.nyc3.digitaloceanspaces.com/BMC-button-images/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>

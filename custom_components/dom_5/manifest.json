@@ -6,6 +6,6 @@
   "dependencies": [],
   "codeowners": ["@PiotrMachowski"],
   "requirements": ["requests", "html2text"],
-  "version": "v1.0.0",
+  "version": "v1.0.1",
   "config_flow": true
 }

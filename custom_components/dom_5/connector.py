@@ -2,7 +2,7 @@ from datetime import timedelta
 
 from homeassistant.util import Throttle
 import logging
-from typing import Any, Callable, List, Optional
+from typing import Any, List, Optional
 
 import requests
 import html2text
@@ -129,19 +129,19 @@ class Dom5Connector:
             return
         try:
             data = Dom5Data()
-            messages_response = session.get(self._url('/iokEwid/DajKorespPoz'))
+            messages_response = session.get(self._url('/iokEwid/DajKorespPoz'), verify=False)
             data.set_messages(messages_response)
             if data.last_message_id is not None:
                 last_message_response = session.get(
-                    self._url(f'/iokEwid/DajSzczegKorespPoz?Ident={data.last_message_id}'))
+                    self._url(f'/iokEwid/DajSzczegKorespPoz?Ident={data.last_message_id}'), verify=False)
                 data.set_last_message(last_message_response)
-            announcements_response = session.get(self._url('/iok/DajOgloszenia'))
+            announcements_response = session.get(self._url('/iok/DajOgloszenia'), verify=False)
             data.set_announcements(announcements_response)
             if data.last_announcement_id is not None:
                 last_announcement_response = session.get(
-                    self._url(f'/iok/DajOgloszenie?Ident={data.last_announcement_id}'))
+                    self._url(f'/iok/DajOgloszenie?Ident={data.last_announcement_id}'), verify=False)
                 data.set_last_announcement(last_announcement_response)
-            finances_response = session.get(self._url('/iokRozr/DajListeRozrachFin'))
+            finances_response = session.get(self._url('/iokRozr/DajListeRozrachFin'), verify=False)
             data.set_finances(finances_response)
             self.data = data
         finally:
@@ -151,13 +151,14 @@ class Dom5Connector:
         session = requests.session()
         login = session.post(url=self._url('/iok/Zaloguj'),
                              data={"Ident": self._username, "Haslo": self._password},
-                             headers={"Referer": self._url("/content/InetObsKontr/login")})
+                             headers={"Referer": self._url("/content/InetObsKontr/login")},
+                             verify=False)
         if Dom5Data.is_valid(login):
             return session
         return None
 
     def _logout(self, session: Session):
-        session.post(self._url('/iok/Wyloguj'))
+        session.post(self._url('/iok/Wyloguj'), verify=False)
 
     def _url(self, path: str):
         return f'{self._base_url}{path}'

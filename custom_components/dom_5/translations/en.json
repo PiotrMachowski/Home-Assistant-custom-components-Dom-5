@@ -1,5 +1,5 @@
 {
-  "title" : "Dom 5",
+  "title": "Dom 5",
   "config": {
     "abort": {
       "already_configured": "[This integration is already configured]"

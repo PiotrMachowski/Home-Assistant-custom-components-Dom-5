@@ -1,0 +1,27 @@
+name: Release
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  release:
+    name: Prepare release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download repo
+        uses: actions/checkout@v1
+
+      - name: Zip dom_5 dir
+        run: |
+          cd /home/runner/work/Home-Assistant-custom-components-Dom-5/Home-Assistant-custom-components-Dom-5/custom_components/dom_5
+          zip dom_5.zip -r ./
+
+      - name: Upload zip to release
+        uses: svenstaro/upload-release-action@v1-release
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: /home/runner/work/Home-Assistant-custom-components-Dom-5/Home-Assistant-custom-components-Dom-5/custom_components/dom_5/dom_5.zip
+          asset_name: dom_5.zip
+          tag: ${{ github.ref }}
+          overwrite: true

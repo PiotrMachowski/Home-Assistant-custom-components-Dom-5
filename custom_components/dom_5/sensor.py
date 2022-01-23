@@ -138,7 +138,7 @@ class Dom5Sensor(Entity):
         return SENSOR_TYPES[self._sensor_type][1](self._connector)
 
     @property
-    def device_state_attributes(self) -> Optional[Dict[str, Any]]:
+    def extra_state_attributes(self) -> Optional[Dict[str, Any]]:
         return SENSOR_TYPES[self._sensor_type][2](self._connector)
 
     def update(self):

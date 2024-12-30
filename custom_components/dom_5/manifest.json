@@ -1,12 +1,17 @@
 {
   "domain": "dom_5",
   "name": "Dom 5",
-  "documentation": "https://github.com/PiotrMachowski/Home-Assistant-custom-components-Dom-5",
-  "issue_tracker": "https://github.com/PiotrMachowski/Home-Assistant-custom-components-Dom-5/issues",
-  "dependencies": [],
-  "codeowners": ["@PiotrMachowski"],
-  "requirements": ["requests", "html2text"],
-  "version": "v0.0.0",
+  "codeowners": [
+    "@PiotrMachowski"
+  ],
   "config_flow": true,
-  "iot_class": "cloud_polling"
+  "dependencies": [],
+  "documentation": "https://github.com/PiotrMachowski/Home-Assistant-custom-components-Dom-5",
+  "iot_class": "cloud_polling",
+  "issue_tracker": "https://github.com/PiotrMachowski/Home-Assistant-custom-components-Dom-5/issues",
+  "requirements": [
+    "requests",
+    "html2text"
+  ],
+  "version": "v0.0.0"
 }

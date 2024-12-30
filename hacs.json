@@ -1,7 +1,6 @@
 {
   "name": "Dom 5",
   "render_readme": true,
-  "domains": ["sensor"],
   "zip_release": true,
   "filename": "dom_5.zip",
   "country": "PL"

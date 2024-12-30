@@ -7,12 +7,6 @@ from .connector import Dom5Connector
 from .const import *
 
 
-async def async_setup(hass: HomeAssistant, config: dict):
-    hass.data.setdefault(DOMAIN, {})
-
-    return True
-
-
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     url = entry.data.get(CONF_URL)
     username = entry.data.get(CONF_USERNAME)

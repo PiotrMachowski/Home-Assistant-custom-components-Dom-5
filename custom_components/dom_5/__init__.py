@@ -18,12 +18,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     username = entry.data.get(CONF_USERNAME)
     password = entry.data.get(CONF_PASSWORD)
     hass.data[DOMAIN][entry.entry_id] = Dom5Connector(url, username, password)
-
-    for component in PLATFORMS:
-        hass.async_create_task(
-            hass.config_entries.async_forward_entry_setup(entry, component)
-        )
-
+    await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
     return True
 
 
